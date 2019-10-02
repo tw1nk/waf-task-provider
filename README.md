@@ -1,6 +1,6 @@
-# Task Provider Sample
+# WAF Provider
 
-This is the source code for the [Task Provider Guide](https://code.visualstudio.com/api/extension-guides/task-provider). It auto-detects tasks in [Waffiles](https://ruby.github.io/waf/).
+This plugin auto-detects tasks in wscript files for [waf](https://ruby.github.io/waf/).
 
 ## VS Code API
 
