@@ -2,9 +2,12 @@
 	"name": "waf-task-provider",
 	"displayName": "WAF task provider",
 	"description": "Automatically provides tasks for the waf build system wscript files",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"publisher": "tw1nk",
-	"enableProposedApi": "true",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tw1nk/waf-task-provider"
+	},
 	"engines": {
 		"vscode": "^1.37.0"
 	},
@@ -14,7 +17,7 @@
 	"activationEvents": [
 		"onCommand:workbench.action.tasks.runTask"
 	],
-	"main": "./out/extension",
+	"main": "./dist/extension",
 	"contributes": {
 		"taskDefinitions": [
 			{
@@ -36,14 +39,21 @@
 		]
 	},
 	"scripts": {
-		"vscode:prepublish": "npm run compile",
+		"vscode:prepublish": "webpack --mode production",
+		"webpack": "webpack --mode development",
+		"webpack-dev": "webpack --mode development --watch",
+		"test-compile": "tsc -p ./",
 		"compile": "tsc -b",
 		"watch": "tsc -b -w"
 	},
 	"devDependencies": {
 		"@types/node": "^8.0.0",
+		"@types/vscode": "^1.32.0",
+		"ts-loader": "^6.2.0",
 		"tslint": "^5.16.0",
 		"typescript": "^3.5.1",
-		"@types/vscode": "^1.32.0"
-	}
+		"webpack": "^4.41.0",
+		"webpack-cli": "^3.3.9"
+	},
+	"dependencies": {}
 }

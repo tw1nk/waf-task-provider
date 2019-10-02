@@ -1,6 +1,6 @@
 # WAF Provider
 
-This plugin auto-detects tasks in wscript files for [waf](https://ruby.github.io/waf/).
+This extension auto-detects tasks in wscript files for [waf](https://ruby.github.io/waf/).
 
 ## VS Code API
 

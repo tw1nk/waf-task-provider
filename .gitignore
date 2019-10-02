@@ -65,3 +65,7 @@ out
 
 # vscode
 .vscode
+
+# distribution
+dist
+*.vsix
