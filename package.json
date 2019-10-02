@@ -1,0 +1,49 @@
+{
+	"name": "waf-task-provider",
+	"displayName": "WAF task provider",
+	"description": "Automatically provides tasks for the waf build system wscript files",
+	"version": "0.0.1",
+	"publisher": "tw1nk",
+	"enableProposedApi": "true",
+	"engines": {
+		"vscode": "^1.37.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:workbench.action.tasks.runTask"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"taskDefinitions": [
+			{
+				"type": "waf",
+				"required": [
+					"task"
+				],
+				"properties": {
+					"task": {
+						"type": "string",
+						"description": "The Waf task to customize"
+					},
+					"file": {
+						"type": "string",
+						"description": "The Waf file that provides the task. Can be omitted."
+					}
+				}
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -b",
+		"watch": "tsc -b -w"
+	},
+	"devDependencies": {
+		"@types/node": "^8.0.0",
+		"tslint": "^5.16.0",
+		"typescript": "^3.5.1",
+		"@types/vscode": "^1.32.0"
+	}
+}
