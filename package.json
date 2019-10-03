@@ -3,7 +3,7 @@
 	"displayName": "WAF task provider",
 	"description": "Automatically provides tasks for the waf build system wscript files",
 	"version": "0.1.0",
-	"publisher": "tw1nk",
+	"publisher": "callegustafsson",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/tw1nk/waf-task-provider"
