@@ -2,7 +2,7 @@
 	"name": "waf-task-provider",
 	"displayName": "WAF task provider",
 	"description": "Automatically provides tasks for the waf build system wscript files",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"publisher": "callegustafsson",
 	"repository": {
 		"type": "git",
@@ -18,8 +18,15 @@
 		"onLanguage:waf",
 		"onCommand:workbench.action.tasks.runTask"
 	],
-	"main": "./out/extension",
+	"main": "./dist/extension",
 	"contributes": {
+		"commands": [
+			{
+				"command": "waf.run",
+				"title": "Waf: Run function",
+				"description": "Runs provided waf thing."
+			}
+		],
 		"languages": [
 			{
 				"id": "waf",
@@ -28,6 +35,9 @@
 				],
 				"aliases": [
 					"Waf",
+					"wscript"
+				],
+				"filenames": [
 					"wscript"
 				]
 			}
@@ -60,7 +70,7 @@
 		"watch": "tsc -b -w"
 	},
 	"devDependencies": {
-		"@types/node": "^8.0.0",
+		"@types/node:": "^8.10.54",
 		"@types/vscode": "^1.32.0",
 		"ts-loader": "^6.2.0",
 		"tslint": "^5.16.0",
@@ -68,5 +78,7 @@
 		"webpack": "^4.41.0",
 		"webpack-cli": "^3.3.9"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"@types/node": "^8.10.54"
+	}
 }
