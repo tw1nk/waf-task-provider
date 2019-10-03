@@ -4,10 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 import * as vscode from 'vscode';
 import { WafTaskProvider } from './wafTaskProvider';
+import { WscriptCodeLensProvider } from './wafCodeLens';
 
 let wafTaskProvider: vscode.Disposable | undefined;
+import {addConsoleLog} from './commands';
 
-export function activate(_context: vscode.ExtensionContext): void {
+
+export function activate(ctx: vscode.ExtensionContext): void {
 	let workspaceFolders = vscode.workspace.workspaceFolders;
 	if (!workspaceFolders) {
 
@@ -18,7 +21,21 @@ export function activate(_context: vscode.ExtensionContext): void {
 		return;
 	}
 
+	let commandDisposable = vscode.commands.registerCommand(
+		"waf.run",
+		addConsoleLog
+	  );
+
 	wafTaskProvider = vscode.tasks.registerTaskProvider(WafTaskProvider.WafType, new WafTaskProvider(workspaceRoot));
+	let docSelector = {
+		language: "waf",
+		scheme: "file"
+	  };
+	let cl = new WscriptCodeLensProvider();
+	let codeLensProviderDisposable = vscode.languages.registerCodeLensProvider(docSelector, cl);
+
+	ctx.subscriptions.push(codeLensProviderDisposable);
+
 }
 
 export function deactivate(): void {

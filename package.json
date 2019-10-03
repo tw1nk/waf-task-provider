@@ -15,10 +15,23 @@
 		"Other"
 	],
 	"activationEvents": [
+		"onLanguage:waf",
 		"onCommand:workbench.action.tasks.runTask"
 	],
-	"main": "./dist/extension",
+	"main": "./out/extension",
 	"contributes": {
+		"languages": [
+			{
+				"id": "waf",
+				"extensions": [
+					"wscript"
+				],
+				"aliases": [
+					"Waf",
+					"wscript"
+				]
+			}
+		],
 		"taskDefinitions": [
 			{
 				"type": "waf",
